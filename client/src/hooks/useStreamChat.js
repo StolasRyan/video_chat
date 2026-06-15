@@ -13,8 +13,8 @@ export const useStreamChat = () => {
 
   const {
     data: tokenData,
-    isLoading: tokenLoading,
-    error: tokenError,
+    isLoading,
+    error,
   } = useQuery({
     queryKey: ["streamToken"],
     queryFn: getStreamToken,
@@ -22,7 +22,7 @@ export const useStreamChat = () => {
   });
 
   useEffect(() => {
-    if (!tokenData.token || !user || !STREAM_API_KEY) return;
+    if (!tokenData?.token || !user || !STREAM_API_KEY) return;
     const client = StreamChat.getInstance(STREAM_API_KEY);
     let cancelled = false;
     const initChat = async () => {
@@ -59,5 +59,5 @@ export const useStreamChat = () => {
     };
   }, [tokenData?.token, user]);
 
-  return { chatClient, isLoading: tokenLoading, error: tokenError };
+  return { chatClient, isLoading, error};
 };

@@ -34,4 +34,11 @@ export const generateStreamToken = async (userId)=>{
         console.error('Error generating Stream token', error);
         return null;
     }
+};
+
+export const addUserToPublicChannels = async (userId) => {
+    const publickChannels = await streamClient.queryChannels({discoverable: true});
+    for (const channel of publickChannels) {
+        await channel.addMembers([userId]);
+    }
 }
