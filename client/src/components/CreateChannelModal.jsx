@@ -15,6 +15,7 @@ const CreateChannelModal = ({ onClose }) => {
     const [users, setUsers] = useState([]);
     const [selectedMembers, setSelectedMembers] = useState([]);
     const [loadingUsers, setLoadingUsers] = useState(false);
+    // eslint-disable-next-line no-unused-vars
     const [_, setSearchParams] = useSearchParams();
 
     const {client, setActiveChannel} = useChatContext();
@@ -43,6 +44,7 @@ const CreateChannelModal = ({ onClose }) => {
                 setLoadingUsers(false);
             }
         }
+        fetchUsers();
     },[client]);
 
     // useEffect(()=>{
@@ -54,6 +56,7 @@ const CreateChannelModal = ({ onClose }) => {
     // }, []);
 
     useEffect(()=>{
+        // eslint-disable-next-line react-hooks/set-state-in-effect
         if(channelType === 'publick')setSelectedMembers(users.map((user) => user.id));
         else setSelectedMembers([]);
     },[channelType, users]);

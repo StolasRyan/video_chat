@@ -30,6 +30,7 @@ const HomePage = () => {
       const channelId = searchParams.get("channel");
       if (channelId) {
         const channel = chatClient.channel("messaging", channelId);
+        // eslint-disable-next-line react-hooks/set-state-in-effect
         setActiveChannel(channel);
       }
     }
