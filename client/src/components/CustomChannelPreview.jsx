@@ -8,7 +8,7 @@ const CustomChannelPreview = ({ channel, activeChannel, setActiveChannel }) => {
 
   if (isDirectMessage) return null;
 
-  const unreadCount = channel?.unread_count;
+  const unreadCount = channel?.countUnread();
   return (
     <button
       onClick={() => setActiveChannel(channel)}
